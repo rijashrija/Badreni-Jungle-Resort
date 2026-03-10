@@ -1,0 +1,31 @@
+const blogs = [
+  {
+    id: 1,
+    title: "Jungle Safari",
+    date: "May 20, 2025",
+    description:
+      "Pamper yourself with rejuvenating massages at Ayatana Spa, crafted to leave you feeling revitalized and refreshed.",
+    image: "/images/blog_img.png",
+    slug: "jungle-safari",
+  },
+  {
+    id: 2,
+    title: "Jungle Safari",
+    date: "May 20, 2025",
+    description:
+      "Pamper yourself with rejuvenating massages at Ayatana Spa, crafted to leave you feeling revitalized and refreshed.",
+    image: "/images/blog_img.png",
+    slug: "jungle-safari-2",
+  },
+  {
+    id: 3,
+    title: "Jungle Safari",
+    date: "May 20, 2025",
+    description:
+      "Pamper yourself with rejuvenating massages at Ayatana Spa, crafted to leave you feeling revitalized and refreshed.",
+    image: "/images/blog_img.png",
+    slug: "jungle-safari-3",
+  },
+];
+
+export default blogs;
