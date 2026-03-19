@@ -1,0 +1,29 @@
+const about_slider = [
+  {
+    id: 1,
+    imageUrl: "/images/about_img.png",
+    title: "Resort Exterior",
+  },
+  {
+    id: 2,
+    imageUrl: "/images/blog_img.png",
+    title: "Rhinos in River",
+  },
+  {
+    id: 3,
+    imageUrl: "/images/experiences-slide-img.png",
+    title: "Treehouse View",
+  },
+  {
+    id: 4,
+    imageUrl: "/images/Chitwan-NP.jpg",
+    title: "Jungle Trail",
+  },
+   {
+    id: 5,
+    imageUrl: "/images/tower night stay.jpg",
+    title: "Tower Night Stay",
+  },
+];
+
+export default about_slider;

@@ -40,3 +40,15 @@ html, body {
   width: 100%;
   height: 100%;
 }
+.custom-pagination .swiper-pagination-bullet {
+  background: #ccc;
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background: #4a7c59;  /* jungle green 🌿 */
+  width: 24px;
+  border-radius: 5px;
+}

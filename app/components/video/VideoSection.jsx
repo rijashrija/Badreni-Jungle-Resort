@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import useFetchApi from "../hooks/useFetchAPI";
+import useFetchApi from "../../hooks/useFetchAPI";
 const VideoSection = () => {
   
   const [showOfferPopup, setShowOfferPopup] = useState(false);
