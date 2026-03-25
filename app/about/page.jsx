@@ -1,8 +1,8 @@
 
 import Image from "next/image";
-import Footer from "../components/footer/Footer";
-import GallerySlider from "../components/slider/GallerySlider";
-import Facilities from "../components/Facilities/facilities";
+import Footer from "../../components/footer/Footer";
+import GallerySlider from "../../components/slider/GallerySlider";
+import Facilities from "../../components/Facilities/facilities";
 export default function About() {
   return (
     <div className="w-full">

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Button from "../components/buttons/button";
-import Footer from "../components/footer/Footer";
+import Button from "../../components/buttons/button";
+import Footer from "../../components/footer/Footer";
 export default function Contact() {
   return (
     <div className="w-full">

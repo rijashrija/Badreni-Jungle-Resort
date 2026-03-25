@@ -1,0 +1,22 @@
+ [
+  {
+    "id": 1,
+    "title": "Luxury Stay",
+    "description":
+      "Embark on a culinary journey like no other as you explore a diverse array of multicuisines, thoughtfully crafted to tantalize your taste buds. Our menu boasts a delightful fusion of local and continental flavors, specially curated to cater to your discerning palate, making every bite a delectable experience.",
+    "image": "/images/img1.png",
+    "background": "/images/exp-bg.png",
+    "slug": "luxury-stay"
+  },
+  {
+    "id": 2,
+    "title": "Adventure Escape",
+    "description":
+      "Embark on a culinary journey like no other as you explore a diverse array of multicuisines, thoughtfully crafted to tantalize your taste buds. Our menu boasts a delightful fusion of local and continental flavors, specially curated to cater to your discerning palate, making every bite a delectable experience.",
+    "image": "/images/img1.png",
+    "background": "/images/exp-bg.png",
+    "slug": "adventure-escape"
+  }
+]
+
+

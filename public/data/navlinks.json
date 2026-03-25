@@ -1,0 +1,6 @@
+[
+  { "id": "about", "title": "The Resort", "link": "/about" },
+  { "id": "rooms", "title": "Rooms", "link": "/rooms" },
+  { "id": "packages", "title": "Package & Offers", "link": "/packages" },
+  { "id": "experience", "title": "Experience", "link": "/experience" }
+]
