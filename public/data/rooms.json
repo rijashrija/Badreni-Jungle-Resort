@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Deluxe Double Room",
+    "price": "USD 60",
+    "plan": "BB Plan",
+    "description": "Our Deluxe Room is where sophisticated design meets ultimate comfort.",
+    "roomSize": "340 sq.ft",
+    "bedType": "Double Bed",
+    "occupancy": "2 adult",
+    "images": [
+      "/images/contact_pic.jpg",
+      "/images/about_img.png"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Standard Twin Room",
+    "price": "USD 50",
+    "plan": "BB Plan",
+    "description": "A comfortable and inviting room perfect for friends or colleagues traveling together.",
+    "roomSize": "300 sq.ft",
+    "bedType": "Twin Bed",
+    "occupancy": "2 adult",
+    "images": [
+      "/images/about_img.png",
+      "/images/contact_pic.jpg"
+    ]
+  }
+]

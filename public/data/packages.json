@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Family Jungle Adventure Two Nights Three Days",
+    "description": "A perfect getaway for families, offering exciting wildlife experiences, comfort, and unforgettable memories.",
+    "image": "/images/about_img.png"
+  },
+  {
+    "id": 2,
+    "title": "Corporate Staff Retreat Package Reconnect and Recharge in Nature",
+    "description": "Strengthen team bonds with our tailored corporate retreats featuring team-building activities and nature walks.",
+    "image": "/images/contact_pic.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Honeymoon Special: Romantic Jungle Escape",
+    "description": "Celebrate love amidst nature. Enjoy private dining, sunset safaris, and luxurious accommodations in the heart of Chitwan.",
+    "image": "/images/about_img.png"
+  },
+  {
+    "id": 4,
+    "title": "Bird Watching & Photography Expedition",
+    "description": "Led by expert naturalists, discover the rich avian diversity of Chitwan National Park. Perfect for enthusiasts and professionals alike.",
+    "image": "/images/contact_pic.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Three Nights Four Days Wildlife Immersion",
+    "description": "Dive deep into the wilderness with extended safaris, canoe rides, and an authentic Tharu cultural experience.",
+    "image": "/images/about_img.png"
+  },
+  {
+    "id": 6,
+    "title": "Weekend Explorer: One Night Two Days",
+    "description": "Short on time? Get a quick taste of the jungle with an action-packed weekend featuring an elephant briefing and guided walk.",
+    "image": "/images/contact_pic.jpg"
+  }
+]

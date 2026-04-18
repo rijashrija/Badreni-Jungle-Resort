@@ -5,13 +5,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import data from "../../public/data/reviewsData.json";
 import Image from "next/image";
 import Button from "../buttons/button";
+import { fetchAPI } from "../../lib/fetchAPI";
+const ReviewsSection = ({ reviewsData }) => {
+  if (!reviewsData || reviewsData.length === 0) return <p>No data found.</p>;
 
-const ReviewsSection = () => {
   const [current, setCurrent] = useState(0);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % data.length);
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % reviewsData.length);
   const prevSlide = () =>
-    setCurrent((prev) => (prev === 0 ? data.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1));
 
   return (
     <section
@@ -47,7 +49,7 @@ const ReviewsSection = () => {
               className="flex w-full transition-transform duration-500 ease-in-out will-change-transform"
               style={{ transform: `translateX(-${current * 100}%)` }}
             >
-              {data.map((item, index) => (
+              {reviewsData.map((item, index) => (
                 <div
                   key={index}
                   className="min-w-full w-full shrink-0 flex flex-col items-center text-center px-4 sm:px-6 md:px-10"
@@ -90,7 +92,7 @@ const ReviewsSection = () => {
 
             {/* DOTS */}
             <div className="flex justify-center gap-2 mt-6">
-              {data?.map((_, index) => (
+              {reviewsData?.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrent(index)}

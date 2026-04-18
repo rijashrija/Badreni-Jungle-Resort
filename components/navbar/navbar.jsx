@@ -1,13 +1,26 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import navLinks from "../../public/data/navlinks.json";
+import Link from "next/link";
+import { fetchAPI } from "../../lib/fetchAPI";
 import Button from "../buttons/button";
 
 const Navbar = () => {
-  if (!navLinks || navLinks.length === 0) return <p>No data found.</p>; 
+  const [navLinks, setNavLinks] = useState(null);
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const loadNavLinks = async () => {
+      try {
+        const data = await fetchAPI("navLinks");
+        setNavLinks(data);
+      } catch (err) {
+        console.error("Failed to fetch nav links", err);
+      }
+    };
+    loadNavLinks();
+  }, []);
 
   // Scroll Listener
   useEffect(() => {
@@ -18,6 +31,9 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (!navLinks) return null;
+  if (navLinks.length === 0) return <p>No data found.</p>;
 
   return (
     <>
@@ -45,7 +61,7 @@ const Navbar = () => {
               <li key={link.id} className="relative group">
                 {link.subLinks ? (
                   <>
-                    <a
+                    <Link
                       href={link.link}
                       className={`cursor-pointer transition-colors duration-300 ${
                         scrolled
@@ -54,24 +70,24 @@ const Navbar = () => {
                       }`}
                     >
                       {link.title}
-                    </a>
+                    </Link>
 
                     {/* Dropdown */}
                     <ul className="absolute left-0 top-full mt-2 hidden group-hover:block bg-white shadow rounded py-2 min-w-[160px]">
                       {link.subLinks.map((sub) => (
                         <li key={sub.id}>
-                          <a
+                          <Link
                             href={sub.link}
                             className="block px-4 py-2 hover:bg-gray-100 text-black"
                           >
                             {sub.title}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
                   </>
                 ) : (
-                  <a
+                  <Link
                     href={link.link}
                     className={`transition-colors duration-300 ${
                       scrolled
@@ -80,7 +96,7 @@ const Navbar = () => {
                     }`}
                   >
                     {link.title}
-                  </a>
+                  </Link>
                 )}
               </li>
             ))}
@@ -104,9 +120,11 @@ const Navbar = () => {
           </button>
 
           {/* BOOK NOW Button */}
-          <Button className="bg-[#6b705c] text-white px-8 py-3 hover:scale-105 transition-transform duration-300">
-            BOOK NOW
-          </Button>
+          <Link href="/booking">
+            <Button className="bg-[#6b705c] text-white px-8 py-3 hover:scale-105 transition-transform duration-300">
+              BOOK NOW
+            </Button>
+          </Link>
         </div>
       </nav>
 
@@ -131,11 +149,32 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="p-6 space-y-4 text-gray-700">
-          <p>Sample Text 1</p>
-          <p>Sample Text 2</p>
-          <p>Sample Text 3</p>
-          <p>Sample Text 4</p>
+        <div className="p-6 space-y-6">
+          {navLinks?.map((link) => (
+            <div key={link.id} className="flex flex-col gap-2">
+              <Link
+                href={link.link}
+                className="text-lg font-medium text-gray-800 hover:text-[#6b705c] transition-colors"
+                onClick={() => setOpen(false)}
+              >
+                {link.title}
+              </Link>
+              {link.subLinks && (
+                <div className="pl-4 flex flex-col gap-2 border-l border-gray-100">
+                  {link.subLinks.map((sub) => (
+                    <Link
+                      key={sub.id}
+                      href={sub.link}
+                      className="text-sm text-gray-500 hover:text-[#6b705c] transition-colors"
+                      onClick={() => setOpen(false)}
+                    >
+                      {sub.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </>

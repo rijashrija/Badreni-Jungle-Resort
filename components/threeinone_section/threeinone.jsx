@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import data from "../../public/data/threeinone.json";
+import Link from "next/link";
+import threeinoneData from "../../public/data/threeinone.json";
 
-export default function ThreeInOneSection() {
+const ThreeInOneSection = () => {
+  if (!threeinoneData || threeinoneData.length === 0) return <p>No data found.</p>;
 
   return (
     <section className="grid md:grid-cols-3 gap-y-4 mt-30">
-      {data?.map((item, index) => (
+      {threeinoneData?.map((item, index) => (
         <div key={index} className="relative group overflow-hidden h-[90vh]">
           {/* Background Image */}
           <Image
@@ -28,12 +30,15 @@ export default function ThreeInOneSection() {
               {item.heading}
             </h2>
 
-            <button className="border border-white px-6 py-3 hover:bg-white hover:text-black transition duration-300">
-              {item.button}
-            </button>
+            <Link href={item.link || "#"}>
+              <button className="border border-white px-6 py-3 hover:bg-white hover:text-black transition duration-300 cursor-pointer">
+                {item.button}
+              </button>
+            </Link>
           </div>
         </div>
       ))}
     </section>
   );
 }
+export default ThreeInOneSection;

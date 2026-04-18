@@ -2,11 +2,11 @@
 import { useState } from "react";
 import data from "../../public/data/galleryData.json";
 import Image from "next/image";
-
-const GallerySection = () => {
+import { fetchAPI } from "../../lib/fetchAPI";
+const GallerySection = ({ galleryData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
- if (!data || data.length === 0) return <p>No data found.</p>; 
+  if (!galleryData || galleryData.length === 0) return <p>No data found.</p>;
 
   const openPopup = (index) => {
     setCurrentIndex(index);
@@ -17,12 +17,12 @@ const GallerySection = () => {
 
   const nextImage = (e) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === data.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === galleryData.length - 1 ? 0 : prev + 1));
   };
 
   const prevImage = (e) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === 0 ? data.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? galleryData.length - 1 : prev - 1));
   };
 
   return (
@@ -45,7 +45,7 @@ const GallerySection = () => {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.map((item, index) => (
+          {galleryData.map((item, index) => (
             <div
               key={item.id}
               className="w-full h-64 relative overflow-hidden rounded-md cursor-pointer"
@@ -87,8 +87,8 @@ const GallerySection = () => {
             {/* Image */}
             <div className="relative w-full h-full flex items-center justify-center">
               <Image
-                src={data[currentIndex].image}
-                alt={data[currentIndex].alt}
+                src={galleryData[currentIndex].image}
+                alt={galleryData[currentIndex].alt}
                 fill
                 className="object-contain"
               />

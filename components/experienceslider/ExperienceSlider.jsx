@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import data from "../../public/data/experiences.json";
 
 const ExperienceSlider = () => {
+  const experiences = data;
   const [current, setCurrent] = useState(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupIndex, setPopupIndex] = useState(0);
@@ -78,9 +80,14 @@ const ExperienceSlider = () => {
               {slide.title}
             </h3>
             <div className="w-64 h-[1px] bg-white mx-auto mb-3"></div>
-            <p className="border border-white/40 p-6 w-70 text-sm leading-relaxed">
+            <p className="border border-white/40 p-6 w-full text-sm leading-relaxed mb-6">
               {slide.description}
             </p>
+            <Link href={`/experience/${slide.id}`} className="mx-auto">
+              <button className="border border-white text-white px-8 py-3 hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-xs">
+                 Explore Experience
+              </button>
+            </Link>
           </div>
         </div>
 

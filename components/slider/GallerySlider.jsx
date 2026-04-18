@@ -2,18 +2,19 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import data from "../../public/data/about_slider.json";
+import { MoveRight, MoveLeft } from "lucide-react";
 
 // styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { fetchAPI } from "../../lib/fetchAPI";
 
-export default function GallerySlider() {
-  if (!data || data.length === 0) return null;
+const GallerySlider = ({ sliderData }) => {
+  if (!sliderData || sliderData.length === 0) return null;
 
   return (
-    <div className="w-full max-w-[1400px] mx-auto py-10 px-4 md:px-8 mt-10 mb-16">
+    <div className="w-full max-w-[1400px] mx-auto py-10 px-4 md:px-12 mt-10 mb-16 relative group/slider">
       
       {/* Custom styles for the cool active slide pop-out animation */}
       <style>{`
@@ -27,29 +28,31 @@ export default function GallerySlider() {
           transform: scale(1);
           z-index: 10;
         }
-        .gallery-swiper .swiper-button-next,
-        .gallery-swiper .swiper-button-prev {
-          color: white;
-          background-color: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(8px);
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          transition: all 0.3s ease;
+        /* Custom Pagination */
+        .gallery-swiper .swiper-pagination-bullet {
+          background: #ccc;
+          opacity: 1;
         }
-        .gallery-swiper .swiper-button-next:hover,
-        .gallery-swiper .swiper-button-prev:hover {
-          background-color: white;
-          color: black;
-          transform: scale(1.1);
+        .gallery-swiper .swiper-pagination-bullet-active {
+          background: #4a7c59;
         }
-        .gallery-swiper .swiper-button-next::after,
-        .gallery-swiper .swiper-button-prev::after {
-          font-size: 20px;
+        /* Disabled state for custom arrows */
+        .gallery-prev-btn.swiper-button-disabled,
+        .gallery-next-btn.swiper-button-disabled {
+          opacity: 0.35;
+          cursor: auto;
+          pointer-events: none;
         }
       `}</style>
       
+      {/* Custom Navigation arrows */}
+      <div className="gallery-prev-btn absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-[#5a6e3a] bg-white flex items-center justify-center cursor-pointer text-[#5a6e3a] hover:bg-[#5a6e3a] hover:text-white transition-all duration-300 shadow-lg group opacity-0 group-hover/slider:opacity-100">
+        <MoveLeft strokeWidth={1.5} size={28} className="group-hover:-translate-x-1 transition-transform" />
+      </div>
+      <div className="gallery-next-btn absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-[#5a6e3a] bg-white flex items-center justify-center cursor-pointer text-[#5a6e3a] hover:bg-[#5a6e3a] hover:text-white transition-all duration-300 shadow-lg group opacity-0 group-hover/slider:opacity-100">
+        <MoveRight strokeWidth={1.5} size={28} className="group-hover:translate-x-1 transition-transform" />
+      </div>
+
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         centeredSlides={true}
@@ -70,11 +73,14 @@ export default function GallerySlider() {
             spaceBetween: 40,
           },
         }}
-        navigation
+        navigation={{
+          prevEl: '.gallery-prev-btn',
+          nextEl: '.gallery-next-btn',
+        }}
         pagination={{ clickable: true }}
         className="gallery-swiper !pb-20"
       >
-        {data.map((item) => (
+        {sliderData.map((item) => (
           <SwiperSlide key={item.id}>
              <div className="relative h-[300px] md:h-[450px] lg:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
                <img
@@ -100,3 +106,4 @@ export default function GallerySlider() {
     </div>
   );
 }
+export default GallerySlider;

@@ -31,6 +31,10 @@ body {
   font-family: 'Gendisa Demo', serif;
   font-size: 2rem;
 }
+
+.font-cormorant {
+  font-family: var(--font-cormorant), serif;
+}
 html, body, #__next {
   height: 100%;
 }

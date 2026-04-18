@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import data from "../../public/data/blogs.json";
 import Button from "../buttons/button";
+import { fetchAPI } from "../../lib/fetchAPI";
 
-const BlogSection = () => {
-
- if (!data || data.length === 0) return <p>No data found.</p>; 
+const BlogSection = async() => {
+  const blogs = await fetchAPI("blogs.json");
+ if (!blogs || blogs.length === 0) return <p>No data found.</p>; 
 
   return (
     <section className="pb-20 px-6 mt-30">

@@ -27,8 +27,7 @@ const Facilities = () => {
     <section className="w-full px-6 py-14 bg-white">
 
       {/* Title */}
-      <h2 className="text-center text-4xl text-[#5a6e3a] mb-10"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}>
+      <h2 className="text-center text-4xl text-[#5a6e3a] mb-10 font-cormorant font-normal">
         Our Facilities
       </h2>
 
@@ -47,8 +46,7 @@ const Facilities = () => {
                   }
                 </div>
                 {/* Label */}
-                <span className="text-[#5a6e3a] text-base leading-snug"
-                      style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <span className="text-[#5a6e3a] text-base leading-snug font-cormorant">
                   {item.label}
                 </span>
               </div>

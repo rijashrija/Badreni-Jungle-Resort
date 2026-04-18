@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import data from "../../public/data/footerData.json";
+import { fetchAPI } from "../../lib/fetchAPI";
 
-const Footer = () => {
+const Footer =async () => {
 
-   if (!data || data.length === 0) return <p>No data found.</p>; 
+   const data = await fetchAPI("footerData.json");
+
+   if (!data || Object.keys(data).length === 0) return <p>No data found.</p>; 
 
   return (
     <footer className="relative bg-[#6f7652] text-white pt-16 pb-6 px-6 md:px-16 mt-30 overflow-hidden">

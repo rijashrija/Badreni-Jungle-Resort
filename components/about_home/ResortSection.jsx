@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import data from "../../public/data/resorts.json";
 import Button from "../buttons/button";
+import { fetchAPI } from "../../lib/fetchAPI";
 
-const ResortSection = () => {
- if (!data || data.length === 0) return <p>No data found.</p>; 
+const ResortSection = async() => {
+  const resorts = await fetchAPI("resorts.json");
+ if (!resorts || resorts.length === 0) return <p>No data found.</p>; 
   return (
     <section className="mt-20 mx-5">
-      {data?.map((resort) => (
+      {resorts?.map((resort) => (
         <div
           key={resort.id}
           className="flex flex-col lg:flex-row gap-6 mx-5 items-center 

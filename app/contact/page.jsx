@@ -1,18 +1,18 @@
 import Image from "next/image";
 import Button from "../../components/buttons/button";
 import Footer from "../../components/footer/Footer";
+import { getData } from "../../lib/getData";
+import PageHero from "../../components/hero/PageHero";
+
 export default function Contact() {
+  const data = getData('footerData.json');
+  const contact = data?.contact;
+  const reservation = data?.reservation;
+
   return (
     <div className="w-full">
       {/* Hero Image */}
-      <div className="relative w-full h-[300px] md:h-[400px]">
-        <Image
-          src="/images/contact_pic.jpg"
-          alt="Contact Hero"
-          fill
-          className="object-cover"
-        />
-      </div>
+      <PageHero src="/images/contact_pic.jpg" alt="Contact Hero" />
         <h1 className=" w-full flex items-center justify-center py-3 bg-[#6b705c] text-white text-3xl md:text-4xl font-bold">
           Contact Us
         </h1>
@@ -24,11 +24,11 @@ export default function Contact() {
           <h2 className="text-2xl font-semibold mb-4">Hotel Location</h2>
           <div className="flex items-center mb-2">
             <span className="mr-2 text-green-700">📍</span>
-            <p>Badreni Road Sauraha, Chitwan, Nepal</p>
+            <p>{contact?.address || "Badreni Road Sauraha, Chitwan, Nepal"}</p>
           </div>
           <div className="flex items-center mb-2">
             <span className="mr-2 text-green-700">📞</span>
-            <p>+977 56 593364, +977-9866247923</p>
+            <p>{contact?.phones?.map(p => p.number).join(', ') || "+977 56 593364, +977-9866247923"}</p>
           </div>
         </div>
 
@@ -37,11 +37,11 @@ export default function Contact() {
           <h2 className="text-2xl font-semibold mb-4">Reservation Office</h2>
           <div className="flex items-center mb-2">
             <span className="mr-2 text-green-700">📍</span>
-            <p>Narayan Gopal Road, Lazimmpat, Kathmandu</p>
+            <p>{reservation?.address || "Narayan Gopal Road, Lazimpat, Kathmandu"}</p>
           </div>
           <div className="flex items-center mb-2">
             <span className="mr-2 text-green-700">📞</span>
-            <p>+977 1 4002027, +977-9866247923</p>
+            <p>{reservation?.phones?.map(p => p.number).join(', ') || "+977 1 4002027, +977-9866247923"}</p>
           </div>
         </div>
       </section>
